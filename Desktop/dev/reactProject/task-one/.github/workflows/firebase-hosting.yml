@@ -1,0 +1,32 @@
+name: Firebase Hosting Deploy
+
+on:
+  push:
+    branches:
+      - main  # mainブランチにプッシュしたときにデプロイされるように設定
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # GitHub Actionsが動作する環境
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # リポジトリのコードをチェックアウト
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'  # 使用するNode.jsのバージョンを指定
+    
+    - name: Install dependencies
+      run: |
+        npm install -g firebase-tools  # Firebase CLIをインストール
+        npm install  # プロジェクトの依存関係をインストール
+
+    - name: Build the project
+      run: |
+        npm run build  # Reactアプリをビルド
+
+    - name: Deploy to Firebase Hosting
+      run: |
+        firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}  # Firebaseにデプロイ
