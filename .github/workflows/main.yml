@@ -32,4 +32,5 @@ jobs:
         expires: 7d
         entryPoint: ./Desktop/dev/reactProject/task-one
         firebaseToolsVersion: latest
+        channelId: preview
 
