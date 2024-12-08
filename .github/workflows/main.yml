@@ -30,6 +30,6 @@ jobs:
         repoToken: ${{ secrets.GITHUB_TOKEN }}
         firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         expires: 7d
-        entryPoint: .
+        entryPoint: ./Desktop/dev/reactProject/task-one
         firebaseToolsVersion: latest
 
